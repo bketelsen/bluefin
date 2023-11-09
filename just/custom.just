@@ -59,6 +59,7 @@ cockpit:
   sudo podman container runlabel --name cockpit-ws RUN quay.io/cockpit/ws
   sudo podman container runlabel INSTALL quay.io/cockpit/ws
   sudo systemctl enable cockpit.service
+  echo 'Open Cockpit -> http://localhost:9090'
 
 # Import a devcontainers profile for VSCode
 code-profile:
@@ -81,6 +82,16 @@ devmode-off:
 devmode-on:
   #!/usr/bin/env bash
   CURRENT_IMAGE=$(rpm-ostree status -b --json | jq -r '.deployments[0]."container-image-reference"')
+
+  if grep -q "/var/ublue-os/image" <<< $CURRENT_IMAGE
+  then
+      echo ""
+      echo "Before we can switch to the Bluefin Developer Experience"
+      echo "the current system needs an update. Please run 'just update'"
+      echo "and reboot your system when the update is finished."
+      exit
+  fi
+
   if grep -q "bluefin-dx" <<< $CURRENT_IMAGE
   then
       echo "You are already on a developer image"
@@ -143,6 +154,11 @@ nix-devbox:
   echo 'Installing devbox!'
   curl -fsSL https://get.jetpack.io/devbox | bash
   echo 'You MUST reboot to continue'
+
+# Remove nix
+nix-remove:
+  echo 'Setting phasers to stun. Removing nix.'
+  /nix/nix-installer uninstall
 
 # Install nix and Devbox (Global Profile)
 nix-devbox-global:
@@ -220,6 +236,7 @@ zsh:
   sudo usermod $USER --shell /usr/bin/zsh 
   printf "${USER}'s shell is now %s." "$(cat /etc/passwd | grep ":$UID:" | cut '-d:' '-f7')"
 
+# Enable docker on the system
 docker:
   sudo systemctl enable --now docker
   sudo usermod -aG docker $USER
