@@ -6,13 +6,13 @@
 				"cockpit-bridge",
 				"evtest",
 				"fish",
+				"firewall-config",
 				"glow",
 				"gum",
 				"gnome-shell-extension-appindicator",
 				"gnome-shell-extension-blur-my-shell",
 				"gnome-shell-extension-dash-to-dock",
 				"gnome-shell-extension-gsconnect",
-				"gnome-shell-extension-tailscale-status",
 				"gnome-shell-extension-logo-menu",
 				"hplip",
 				"ifuse",
@@ -25,6 +25,8 @@
 				"make",
 				"mesa-libGLU",
 				"nautilus-gsconnect",
+				"nerd-fonts",
+				"playerctl",
 				"pulseaudio-utils",
 				"python3-pip",
 				"samba-dcerpc",
@@ -36,7 +38,6 @@
 				"stress-ng",
 				"tailscale",
 				"tmux",
-				"ublue-update",
 				"usbmuxd",
 				"wireguard-tools",
 				"xprop",
@@ -46,7 +47,7 @@
 			],
 			"bluefin-dx": [
 				"adobe-source-code-pro-fonts",
-				"cascadiacode-nerd-fonts",
+				"cascadia-code-fonts",
 				"cockpit-machines",
 				"cockpit-networkmanager",
 				"cockpit-ostree",
@@ -58,7 +59,8 @@
 				"code",
 				"containerd.io",
 				"dbus-x11",
-                                "devpod",
+                "devpod",
+				"distrobuilder",
 				"docker-ce",
 				"docker-ce-cli",
 				"docker-buildx-plugin",
@@ -95,8 +97,7 @@
 				"qemu-user-binfmt",
 				"qemu-user-static",
 				"qemu",
-				"ubuntu-nerd-fonts",
-				"ubuntumono-nerd-fonts",
+				"ubuntu-family-fonts",
 				"virt-manager",
 				"virt-viewer"
 			]
@@ -115,7 +116,9 @@
 	},
 	"38": {
 		"include": {
-			"bluefin": [],
+			"bluefin": [
+				"gnome-shell-extension-tailscale-status"
+			],
 			"bluefin-dx": [],
 			"bluefin-framework": []
 		},
@@ -129,8 +132,14 @@
 	"39": {
 		"include": {
 			"bluefin": [
+				"gnome-shell-extension-tailscale-gnome-qs",
 				"input-leap",
-     "nautilus-open-any-terminal"
+				"nautilus-open-any-terminal",
+				"tuned",
+				"tuned-ppd",
+				"tuned-utils",
+				"tuned-utils-systemtap",
+				"tuned-profiles-atomic"
 			],
 			"bluefin-dx": [],
 			"bluefin-framework": []
@@ -138,7 +147,7 @@
 		"exclude": {
 			"bluefin": [
 				"podman-docker",
-     "gnome-terminal-nautilus"
+				"gnome-terminal-nautilus"
 			],
 			"bluefin-dx": [],
 			"bluefin-framework": []
