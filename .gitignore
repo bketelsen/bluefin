@@ -1,6 +1,17 @@
-*.iso
-*.iso-CHECKSUM
 flatpaks_with_deps
 flatpak.*
 
-scripts/files/home/ublue-os/*
+*_build
+*_build.*
+previous.manifest.json
+changelog.md
+output.env
+version.txt
+sbom_out/
+
+devcontainer
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
